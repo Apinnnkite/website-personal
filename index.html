@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pribadi - Victory Kaligis</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #121212;
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+            padding-top: 80px; /* Increased top padding to avoid content hidden under the header */
+        }
+
+        /* Navigation */
+        header {
+            background: #1f1f1f;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: padding 0.3s ease;
+        }
+
+        header.shrink {
+            padding: 10px 0; /* Smaller padding when scrolling */
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px; /* Reduced margin between items */
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85em; /* Even smaller font size */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Font size reduction when header is shrunk */
+        header.shrink nav ul li a {
+            font-size: 0.75em; /* Further smaller font size when scrolling */
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #5b6bff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        nav ul li a:hover {
+            color: #5b6bff;
+            transform: translateY(-3px);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            background-image: url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            animation: fadeInHero 2s ease-out forwards;
+        }
+
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.25em;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInText 2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Profile Image */
+        .profil-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: scaleUp 1s ease-out forwards;
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            animation: slideInFooter 1s ease-out;
+        }
+
+        @keyframes slideInFooter {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 0.8em; /* Slightly smaller font for mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Profil</a></li>
+                <li><a href="portfolio.html">Portofolio</a></li>
+                <li><a href="articles.html">Artikel</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="img/WhatsApp Image 2025-03-08 at 21.35.59.jpeg" alt="Foto Profil" class="profil-img">
+            <h1>Selamat datang di portofolio saya!</h1>
+            <p>Halo, saya Victory Kaligis, seorang mahasiswa di Universitas Negeri Manado dengan minat besar dalam pengembangan perangkat lunak, web development, dan jaringan komputer. Melalui portofolio ini, saya ingin memperkenalkan beberapa proyek dan karya yang telah saya kerjakan. Saya selalu bersemangat untuk belajar hal-hal baru dan mengasah keterampilan saya dalam dunia teknologi.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Victory Kaligis. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        // JavaScript to add "shrink" class to header when scrolling
+        window.onscroll = function () {
+            let header = document.getElementById("header");
+            if (window.pageYOffset > 100) {
+                header.classList.add("shrink");
+            } else {
+                header.classList.remove("shrink");
+            }
+        };
+    </script>
+</body>
+
+</html>

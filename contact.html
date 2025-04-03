@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Nama Anda</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set background and font styles for the whole page */
+        body {
+            background: #0a0a23; /* Dark space background */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            animation: fadeInBody 2s ease-out;
+        }
+
+        /* Fade-in animation for body */
+        @keyframes fadeInBody {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Style the header */
+        header {
+            background: #1f1f1f;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: padding 0.3s ease;
+        }
+
+        header.shrink {
+            padding: 10px 0; /* Smaller padding when scrolling */
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px; /* Reduced margin between items */
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85em; /* Even smaller font size */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Font size reduction when header is shrunk */
+        header.shrink nav ul li a {
+            font-size: 0.75em; /* Further smaller font size when scrolling */
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #5b6bff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        nav ul li a:hover {
+            color: #5b6bff;
+            transform: translateY(-3px);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 100px 40px 40px; /* Increased top padding to avoid overlap with header */
+            text-align: center;
+            animation: fadeInContact 2s ease-out forwards;
+        }
+
+        @keyframes fadeInContact {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .contact h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Contact form styling */
+        form {
+            margin-bottom: 40px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border: none;
+            background-color: #5b6bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3a4fb4;
+        }
+
+        /* Social Media Links Styling */
+        .social {
+            margin-top: 30px;
+        }
+
+        .social p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .social a {
+            text-decoration: none;
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social a:hover {
+            transform: scale(1.2);
+        }
+
+        .social a img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px; /* Increased margin-right for consistency */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            animation: slideInFooter 1s ease-out;
+        }
+
+        @keyframes slideInFooter {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        footer p {
+            font-size: 1em;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Profil</a></li>
+                <li><a href="portfolio.html">Portofolio</a></li>
+                <li><a href="articles.html">Artikel</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+            <h1>Kontak Saya</h1>
+            <form action="#">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Pesan:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Kirim</button>
+            </form>
+
+            <div class="social">
+                <p>Ikuti saya di media sosial:</p>
+                <!-- Social Media Icons -->
+                <a href="https://www.facebook.com/share/162f34UmYX/?mibextid=wwXIfr">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+                </a>
+                <a href="https://www.instagram.com/alfinkaligis/profilecard/?igsh=YzI4YTJiMGhzdjBr">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram Logo">
+                </a>
+                <a href="https://www.tiktok.com/@f1nxzy_?_t=ZS-8vCdVfwEcjv&_r=1">
+                    <img src="img/tiktok 2.webp" alt="TikTok Logo">
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Victory Kaligis. Semua hak dilindungi.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel - Nama Anda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a23;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            animation: fadeInBody 2s ease-out;
+        }
+
+        @keyframes fadeInBody {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        header {
+            background: #1f1f1f;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: padding 0.3s ease;
+        }
+
+        header.shrink {
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header.shrink nav ul li a {
+            font-size: 0.75em;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #5b6bff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        nav ul li a:hover {
+            color: #5b6bff;
+            transform: translateY(-3px);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .articles {
+            padding: 60px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            margin: 20px auto;
+            cursor: pointer;
+            display: inline-block;
+            width: 320px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideUp 1s ease-out;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 10% auto;
+            text-align: left;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .close {
+            color: #bbb;
+            float: right;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+         footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            animation: slideInFooter 1s ease-out;
+        }
+
+        @keyframes slideInFooter {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        footer p {
+            font-size: 1em;
+            color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="about.html">Profil</a></li>
+                <li><a href="portfolio.html">Portofolio</a></li>
+                <li><a href="articles.html">Artikel</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="articles">
+            <div class="card" onclick="openModal('modal1')">
+                <img src="img/at1.png" alt="Gambar Blockchain">
+                <h2>Pengenalan Teknologi Blockchain</h2>
+            </div>
+            <div class="card" onclick="openModal('modal2')">
+                <img src="img/at2.png" alt="Gambar React">
+                <h2>Mengapa React Populer untuk Pengembangan Web?</h2>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Pengenalan Teknologi Blockchain</h2>
+            <p>Blockchain adalah sistem penyimpanan data yang terdistribusi dan terenkripsi yang memungkinkan transaksi yang aman dan transparan.</p>
+            <p><a href="https://aws.amazon.com/id/what-is/blockchain/" target="_blank" style="color: #5b6bff;">Baca selengkapnya</a></p>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Mengapa React Populer?</h2>
+            <p>React menawarkan komponen yang dapat digunakan kembali, Virtual DOM untuk performa cepat, dan komunitas besar yang mendukung pengembang.</p>
+            <p><a href="https://www.codepolitan.com/blog/5-alasan-react-js-adalah-library-pengembangan-web-terbaik/" target="_blank" style="color: #5b6bff;">Baca selengkapnya</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Victory Kaligis. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
